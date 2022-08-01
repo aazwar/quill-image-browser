@@ -1,0 +1,35 @@
+{
+  "name": "@roel.id/quill-raw-html-edit",
+  "description": "A Quill rich text editor Module which adds a raw html editor",
+  "version": "0.1",
+  "main": "quill-raw-html-edit.min.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aazwar/quill-raw-html-edit.git"
+  },
+  "author": "Azrul Azwar <soft@fuwafuwa.web.id>",
+  "license": "MIT",
+  "keywords": [
+    "quill",
+    "quilljs",
+    "html",
+    "raw",
+    "edit"
+  ],
+  "files": [
+    "*.js",
+    "gulpfile.js"
+  ],
+  "bugs": {
+    "url": "https://github.com/aazwar/quill-raw-html-edit/issues"
+  },
+  "homepage": "https://github.com/aazwar/quill-raw-html-edit#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-rename": "^2.0.0",
+    "gulp-terser": "^2.1.0"
+  }
+}
