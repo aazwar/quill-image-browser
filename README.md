@@ -4,7 +4,7 @@ Image browser for Quill text editor.
 # Usage
 ``` js
 <script src="/js/quill/quill.min.js"></script>
-<script src="/js/media-browser.js"></script>
+<script src="/js/media-browser.min.js"></script>
 <script>
   let quill = new Quill('#editor', {
     theme: 'snow',

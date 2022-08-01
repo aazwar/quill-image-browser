@@ -1,29 +1,28 @@
 {
-  "name": "@roel.id/quill-raw-html-edit",
-  "description": "A Quill rich text editor Module which adds a raw html editor",
+  "name": "@roel.id/quill-image-browser",
+  "description": "A Quill rich text editor Module which adds an image browser ",
   "version": "0.1",
-  "main": "quill-raw-html-edit.min.js",
+  "main": "media-browser.min.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aazwar/quill-raw-html-edit.git"
+    "url": "git+https://github.com/aazwar/quill-image-browser.git"
   },
   "author": "Azrul Azwar <soft@fuwafuwa.web.id>",
   "license": "MIT",
   "keywords": [
     "quill",
     "quilljs",
-    "html",
-    "raw",
-    "edit"
+    "image",
+    "browser"
   ],
   "files": [
     "*.js",
     "gulpfile.js"
   ],
   "bugs": {
-    "url": "https://github.com/aazwar/quill-raw-html-edit/issues"
+    "url": "https://github.com/aazwar/quill-image-browser/issues"
   },
-  "homepage": "https://github.com/aazwar/quill-raw-html-edit#readme",
+  "homepage": "https://github.com/aazwar/quill-image-browser#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
