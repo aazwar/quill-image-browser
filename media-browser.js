@@ -69,7 +69,6 @@ class MediaBrowser {
       }
     }
     this.urlbox = panel.querySelector('#urlbox');
-    console.log(this.urlbox);
     // this.urlbox.querySelector('input').onblur = () => panel.querySelector('#urlLink').click();
     this.urlbox.querySelector('button').onclick = e => {
       e.preventDefault();

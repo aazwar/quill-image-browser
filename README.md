@@ -1,8 +1,13 @@
 # quill-image-browser
-Image browser for Quill text editor. 
+
+![npm (scoped)](https://img.shields.io/npm/v/@roel.id/quill-image-browser?style=plastic)
+![NPM](https://img.shields.io/npm/l/@roel.id/quill-image-browser?style=plastic)
+![npm](https://img.shields.io/npm/dm/@roel.id/quill-image-browser?style=plastic)
+
+`quill-image-browser` is image browser module for Quill text editor. By default, Quill embed image into post as base64 string, which make the post unnecessarily large. There is [`quill-image-uploader`](https://github.com/noeloconnell/quill-image-uploader) module that overcome this problem. And better, this module can intercept dragged or pasted image, and upload to server. But how if one wants to pick previously uploaded image? Then `quill-image-browser` come to rescue.
 
 # Usage
-``` js
+``` html
 <script src="/js/quill/quill.min.js"></script>
 <script src="/js/media-browser.min.js"></script>
 <script>
@@ -13,10 +18,6 @@ Image browser for Quill text editor.
         container: [['bold', 'italic'], ['image']],
         handlers: {
           image: () => {
-            const callback = url => {
-              let range = quill.getSelection(true);
-              quill.insertEmbed(range.index, "image", `${url}`);
-            };
             new MediaBrowser({
               parent: '.ql-container',
               upload: file => {// upload file to server, return url,
@@ -39,7 +40,10 @@ Image browser for Quill text editor.
                   resolve(keyword ? images.filter(e => e.name.match(new RegExp(keyword, 'i'))) : images);
                 })
               },
-              callback,
+              callback: url => {
+                let range = quill.getSelection(true);
+                quill.insertEmbed(range.index, "image", `${url}`);
+              },
             }).open();
           }
         }
@@ -50,3 +54,34 @@ Image browser for Quill text editor.
 ```
 
 ![Image Browser](/quill-image-browser.png)
+
+# Using together with `quill-image-uploader`
+We can use `quill-image-browser` along side with `quill-image-uploader` by creating a new class that extends `ImageUploader`.
+
+``` js
+class ImageBrowser extends ImageUploader {
+  constructor(quill, options) {
+    super(quill, options);
+    this.range = null;
+    const toolbar = quill.getModule("toolbar");
+    toolbar.addHandler("image", this.browseLocalImage.bind(this));
+    this.mediaBrowser = new MediaBrowser({
+      parent: '.ql-container',
+      upload: options.upload,
+      list: options.list,
+      callback: this.callback.bind(this),
+    });
+  }
+
+  browseLocalImage() {
+    this.range = this.quill.getSelection();
+    this.mediaBrowser.open();
+  }
+
+  callback(images) {
+    this.quill.insertEmbed(this.range.index, "image", `${images[0]}`, "user");
+  }
+}
+```
+
+In this class, we replace the `image` handler, and let parent class catch image drop or paste event as usual.
