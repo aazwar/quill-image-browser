@@ -1,7 +1,7 @@
 {
   "name": "@roel.id/quill-image-browser",
   "description": "A Quill rich text editor Module which adds an image browser ",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "media-browser.min.js",
   "repository": {
     "type": "git",
