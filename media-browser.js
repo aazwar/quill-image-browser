@@ -74,7 +74,7 @@ class MediaBrowser {
       e.preventDefault();
       let value = this.urlbox.querySelector('input').value;
       if (value) {
-        this.callback(value);
+        this.callback([{ url: value, name: value.split('/').reverse()[0] }]);
       } else {
         this.urlbox.style.display = 'none';
       }
